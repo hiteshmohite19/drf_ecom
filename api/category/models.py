@@ -1,7 +1,7 @@
 from django.db import models
 from django.utils.text import slugify
 from uuid import uuid4
-from products.models import Products
+from api.products.models import Products
 # Create your models here.
 
 

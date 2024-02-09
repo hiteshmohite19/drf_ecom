@@ -23,8 +23,7 @@ from .settings import base
 urlpatterns = [
     path("admin/", admin.site.urls),
     # path("", include("home.urls")),
-    path("products/", include("products.urls")),
-    path("category/", include("category.urls")),
+    path("api/", include("api.urls")),
 ]
 
 if base.DEBUG:
