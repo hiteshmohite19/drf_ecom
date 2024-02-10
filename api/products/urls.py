@@ -1,8 +1,8 @@
 from django.urls import path, include
+from .views import ProductDetials
 
-from .views import ProductsList,ProductVariantsList
 
 urlpatterns = [
-    path("", ProductsList.as_view()),
-    path("product-variants/", ProductVariantsList.as_view()),
+    path("", ProductDetials.as_view({"get": "get"})),
+    path("price-filter/", ProductDetials.as_view({"post": "price_filter_data"})),
 ]

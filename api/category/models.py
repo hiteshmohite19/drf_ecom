@@ -11,11 +11,12 @@ class Category(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid4, editable=False)
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
-    category = models.ManyToManyField(Products)
+    products = models.ManyToManyField(Products)
 
     def __str__(self):
         return self.name
-
+    
+    
     def save(self):
         self.slug = slugify(self.name)
         super().save()
