@@ -14,10 +14,9 @@ class ProductDetials(ViewSet):
         serializer = ProductsSerializer(queryset, many=True)
         return Response(serializer.data)
 
-    def price_filter_data(self, request):
+    def filter_data(self, request):
         data = request.data
-        filter_query = {"price__lte": data['greater'], "price__gte": data['less']}
-        products = Products.objects.filter(**filter_query)
+        products = Products.objects.filter(**data)
         serializer = ProductsSerializer(products, many=True)
         return Response(serializer.data)
 

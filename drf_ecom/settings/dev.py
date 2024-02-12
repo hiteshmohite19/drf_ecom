@@ -3,7 +3,7 @@ from .base import *
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql",
-        "NAME": "drf_ecom",
+        "NAME": "ecom_drf",
         "USER": "grizzly",
         "PASSWORD": "pandu",
         "HOST": "localhost",

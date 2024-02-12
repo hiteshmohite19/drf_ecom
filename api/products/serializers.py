@@ -1,15 +1,11 @@
 from rest_framework.serializers import ModelSerializer
-from .models import Products, ProductVariations
+from .models import Products
+from api.masterdata_variants.serializers import ColorVariantSerializer
 
-
-class ProductVariantsSerializer(ModelSerializer):
-    class Meta:
-        model = ProductVariations
-        fields = ("size", "color", "quantity", "price")
 
 
 class ProductsSerializer(ModelSerializer):
-    variations = ProductVariantsSerializer(many=True)
+    color = ColorVariantSerializer(many=True)
 
     class Meta:
         model = Products

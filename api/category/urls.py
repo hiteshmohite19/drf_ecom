@@ -4,6 +4,5 @@ from .views import CategoryDetails
 
 urlpatterns = [
     path("", CategoryDetails.as_view({"get": "get"})),
-    path("", CategoryDetails.as_view({"post": "filtered_data"})),
     path("<name>/", CategoryDetails.as_view({"get": "get_by_category"})),
 ]

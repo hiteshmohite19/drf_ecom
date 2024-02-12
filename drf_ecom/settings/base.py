@@ -44,7 +44,8 @@ INSTALLED_APPS = [
     "api",
     "api.products",
     "api.category",
-    "api.masterdata",
+    "api.masterdata_variants",
+    "api.users",
 ]
 
 MIDDLEWARE = [
@@ -133,3 +134,5 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 MEDIA_ROOT = os.path.join(BASE_DIR, "assets")
 MEDIA_URL = "/assets/"
+
+AUTH_USER_MODEL = "users.User"
