@@ -9,6 +9,7 @@ admin.site.register(ColorMasterData)
 admin.site.register(ColorVariants)
 admin.site.register(SizeMasterData)
 admin.site.register(SizeVariants)
+admin.site.register(Coupon)
 
 
 class ColorAdmin(ColorVariants):

@@ -41,11 +41,13 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "rest_framework",
+    "rest_framework_simplejwt",
     "api",
     "api.products",
     "api.category",
     "api.masterdata_variants",
     "api.users",
+    "api.orders",
 ]
 
 MIDDLEWARE = [
@@ -136,3 +138,10 @@ MEDIA_ROOT = os.path.join(BASE_DIR, "assets")
 MEDIA_URL = "/assets/"
 
 AUTH_USER_MODEL = "users.User"
+
+
+REST_FRAMEWORK = {
+    "DEFAULT_AUTHENTICATION_CLASSES": (
+        "rest_framework_simplejwt.authentication.JWTAuthentication",
+    )
+}

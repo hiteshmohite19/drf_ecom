@@ -73,3 +73,23 @@ class ColorVariants(models.Model):
 
     def __str__(self) -> ColorMasterData:
         return f"{str(self.color)}-{str(self.price)}-{str(self.quantity)}-{self.get_size_details()}"
+
+
+discount_by_options =(
+    ('rupees','Rupees'),
+    ('percentage','Percentage'),
+)
+
+
+class Coupon(models.Model):
+    id = models.UUIDField(primary_key=True, default=uuid4, editable=False)
+    coupon = models.CharField(null=True, max_length=10)
+    expires = models.DateTimeField(null=True)
+    discount = models.IntegerField(null=True)
+    discount_by = models.CharField(choices=discount_by_options, null=True)
+    is_active = models.BooleanField(default=False)
+    created = models.DateTimeField(auto_now_add=True)
+    updated = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return f"{self.coupon}"

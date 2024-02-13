@@ -41,13 +41,13 @@ class Products(models.Model):
 
 class ProductImages(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid4, editable=False)
-    created = models.DateTimeField(auto_now_add=True)
-    updated = models.DateTimeField(auto_now=True)
     image = models.ImageField(upload_to="products/")
     color = models.ForeignKey(
         ColorVariants, on_delete=models.CASCADE, default="Default"
     )
     product = models.ForeignKey(Products, on_delete=models.CASCADE, default=None)
+    created = models.DateTimeField(auto_now_add=True)
+    updated = models.DateTimeField(auto_now=True)
 
     def __str__(self):
         return self.image

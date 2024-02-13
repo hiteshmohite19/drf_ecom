@@ -48,3 +48,17 @@ class User(AbstractBaseUser, PermissionsMixin):
 
     def __str__(self):
         return self.username
+
+
+class UserAddress(models.Model):
+    id = models.UUIDField(primary_key=True, default=uuid4, editable=False)
+    user= models.ForeignKey(User,on_delete=models.PROTECT)
+    address = models.CharField(max_length=200, null=False, blank=False)
+    city = models.CharField(max_length=100, null=False, blank=False)
+    state = models.CharField(max_length=100, null=False, blank=False)
+    pincode = models.CharField(max_length=6, null=False, blank=False)
+    created = models.DateTimeField(auto_now_add=True)
+    updated = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return self.address
