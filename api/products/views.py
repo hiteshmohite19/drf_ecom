@@ -14,9 +14,9 @@ class ProductDetials(ViewSet):
         serializer = ProductsSerializer(queryset, many=True)
         return Response(serializer.data)
 
-    def filter_data(self, request):
-        data = request.data
-        products = Products.objects.filter(**data)
-        serializer = ProductsSerializer(products, many=True)
-        return Response(serializer.data)
+    # def filter_data(self, request):
+    #     data = request.data
+    #     products = Products.objects.filter(**data)
+    #     serializer = ProductsSerializer(products, many=True)
+    #     return Response(serializer.data)
 

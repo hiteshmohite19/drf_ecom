@@ -16,6 +16,9 @@ class ColorSerializer(ModelSerializer):
 
 
 class SizeVariantSerializer(ModelSerializer):
+
+    size = SizeSerializer()
+
     class Meta:
         model = SizeVariants
         fields = "__all__"
@@ -23,6 +26,7 @@ class SizeVariantSerializer(ModelSerializer):
 
 class ColorVariantSerializer(ModelSerializer):
     size = SizeVariantSerializer(many=True)
+    color = ColorSerializer()
 
     class Meta:
         model = ColorVariants

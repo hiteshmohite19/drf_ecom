@@ -1,7 +1,6 @@
 from rest_framework.serializers import ModelSerializer
 from .models import Products
-from api.masterdata_variants.serializers import ColorVariantSerializer
-
+from api.masterdata_variants.serializers import *
 
 
 class ProductsSerializer(ModelSerializer):

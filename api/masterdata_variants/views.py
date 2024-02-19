@@ -1,7 +1,6 @@
-from django.shortcuts import render
-from rest_framework.generics import ListAPIView
 from rest_framework.response import Response
 from rest_framework.viewsets import ViewSet
+from django.core.cache import cache
 from .models import *
 from .serializers import *
 
@@ -11,11 +10,10 @@ from .serializers import *
 class Colors(ViewSet):
 
     def get(self, request):
-        colors = ColorVariants.objects.all()
-        serializer = ColorVariantSerializer(colors, many=True)
-        return Response(serializer.data)
+        return Response(cache.get('colors'))
 
 
-class Size(ListAPIView):
-    queryset = SizeVariants.objects.all()
-    serializer_class = SizeVariantSerializer
+class Size(ViewSet):
+    
+    def get(self,request):
+        return Response(cache.get('size'))
