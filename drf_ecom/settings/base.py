@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     "api.category",
     "api.masterdata_variants",
     "api.users",
+    "api.cart",
     "api.orders",
     "api.cachedata",
 ]

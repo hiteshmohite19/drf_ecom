@@ -20,7 +20,6 @@ from api.masterdata_variants.models import ColorVariants
 #     )
 
 
-
 class Products(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid4, editable=False)
     name = models.CharField(max_length=100)
@@ -43,14 +42,21 @@ class ProductImages(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid4, editable=False)
     image = models.ImageField(upload_to="products/")
     color = models.ForeignKey(
-        ColorVariants, on_delete=models.CASCADE, default="Default"
+        ColorVariants,
+        on_delete=models.CASCADE,
+        default="Default"
     )
-    product = models.ForeignKey(Products, on_delete=models.CASCADE, default=None)
+    product = models.ForeignKey(
+        Products, on_delete=models.CASCADE, default=None, related_name="product_images"
+    )
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
 
+    class Meta:
+        ordering = ("-created",)
+
     def __str__(self):
-        return self.image
+        return str(self.id)
 
     def save(self):
         for field in self._meta.fields:

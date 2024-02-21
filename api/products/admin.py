@@ -7,6 +7,10 @@ admin.site.register(Products)
 admin.site.register(ProductImages)
 
 
+class ProductImagesAdmin(admin.ModelAdmin):
+    ordering = ("-created",)
+
+
 class ProductsAdmin(admin.ModelAdmin):
     list_display = ("name",)
 
